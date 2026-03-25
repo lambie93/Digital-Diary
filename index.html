@@ -15,11 +15,29 @@ body {
     text-align: center;
 }
 </style>
-<form>
-    <label for="username">Username:</label><br>
-    <input type="text" id="username" name="username"><br><br>
-    <label for="password">Password:</label><br>
-    <input type="password" id="password" name="password"><br><br>
+<form onsubmit="return false;">
+    <label>Password 🔒:</label><br>
+    <input type="password" id="password"><br><br>
+    <p id="message"></p>
+    <button onclick="checkPassword()">Unlock 🔓</button>
 </form>
+<script>
+const password = "sleepover";
+
+function checkPassword() {
+    let userInput = document.getElementById("password").value;
+    let message = document.getElementById("message");
+    let button = document.querySelector("button");
+    if (userInput === password) {
+        button.style.display = "none";
+        document.getElementById("password").disabled = true;
+        message.textContent = "Unlocked 🔓!";
+        window.location.href = "diary.html";
+    } else {
+        message.textContent = "❌ Wrong 🚫 password! 👀";
+        message.textContent = "Locked 🔒!";
+    }
+}
+</script>
 </body>
 </html>
