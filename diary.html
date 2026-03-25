@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>My Secret Diary 💌</title>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oswald:400,700&display=swap">
+        </head>
+    <body>
+        <h1>My Secret Diary 💌</h1>
+        <style>
+            body {
+                font-family: 'Oswald', sans-serif;
+                background: #ffe8f2;
+                text-align: center;
+            }
+        </style>
+        <p>Dear Diary,</p>
+        <textarea id="myDiary" rows="100" cols="100" placeholder="Type..."></textarea><br><br>
+        <button onclick="saveEntry()">Save Entry 💾</button>
+        <p id="saveMessage"></p>
+        <script>
+            function saveEntry() {
+                let diaryContent = document.getElementById("myDiary").value;
+                localStorage.setItem("diaryEntry", diaryContent);
+                document.getElementById("saveMessage").textContent = "Saved ✅!";
+            }
+            window.onload = function() {
+                let savedEntry = localStorage.getItem("diaryEntry");
+                if (savedEntry) {
+                    document.getElementById("myDiary").value = savedEntry;
+                }
+            }
+        </script>
+    </body>
+</html>
